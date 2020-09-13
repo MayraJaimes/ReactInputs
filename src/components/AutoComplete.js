@@ -58,18 +58,14 @@ export class Autocomplete extends Component {
       }
       this.setState({activeOption: activeOption + 1});
     }
-
-    }
+  }
     
-
   render(){
     const{
       onChange,
-      onChange,
       onKeyDown,
-      userInput,
-      state: {activeOption, filteredOption, showOptions, userInput
-      }
+      onClick,
+      state: {activeOption, filteredOptions, showOptions, userInput}
     } = this;
     let optionList;
 
@@ -77,7 +73,7 @@ export class Autocomplete extends Component {
       if(filteredOptions.length){
         optionList = (
           <ul className='options'> 
-          {filteredOptions.map(() => {
+          {filteredOptions.map((optionName, index) => {
             let className;
             if(index === activeOption){
               className = 'option-active';
